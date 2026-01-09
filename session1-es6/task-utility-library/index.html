@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Utility Library Demo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .demo-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 { color: #333; }
+    h2 { color: #0066cc; }
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+    }
+    .result {
+      background: #e8f5e9;
+      padding: 10px;
+      margin: 10px 0;
+      border-left: 4px solid #4caf50;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛠️ JavaScript Utility Library</h1>
+  <p>Open the console to see the utility functions in action!</p>
+  
+  <div class="demo-section">
+    <h2>String Utils</h2>
+    <div id="string-demo"></div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>Array Utils</h2>
+    <div id="array-demo"></div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>Object Utils</h2>
+    <div id="object-demo"></div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>Number Utils</h2>
+    <div id="number-demo"></div>
+  </div>
+
+  <script type="module">
+    import utils from './utils.js';
+
+    // String demos
+    const stringDemo = document.getElementById('string-demo');
+    stringDemo.innerHTML = `
+      <div class="result">capitalize('hello'): <code>${utils.string.capitalize('hello')}</code></div>
+      <div class="result">reverse('hello'): <code>${utils.string.reverse('hello')}</code></div>
+      <div class="result">slugify('Hello World 2024!'): <code>${utils.string.slugify('Hello World 2024!')}</code></div>
+    `;
+
+    // Array demos
+    const arrayDemo = document.getElementById('array-demo');
+    arrayDemo.innerHTML = `
+      <div class="result">unique([1,2,2,3,3,4]): <code>${JSON.stringify(utils.array.unique([1,2,2,3,3,4]))}</code></div>
+      <div class="result">chunk([1,2,3,4,5,6], 2): <code>${JSON.stringify(utils.array.chunk([1,2,3,4,5,6], 2))}</code></div>
+      <div class="result">flatten([[1,2],[3,[4,5]]]): <code>${JSON.stringify(utils.array.flatten([[1,2],[3,[4,5]]]))}</code></div>
+    `;
+
+    // Object demos
+    const obj = { name: 'John', age: 25, city: 'Mumbai', country: 'India' };
+    const objectDemo = document.getElementById('object-demo');
+    objectDemo.innerHTML = `
+      <div class="result">pick(obj, ['name', 'age']): <code>${JSON.stringify(utils.object.pick(obj, ['name', 'age']))}</code></div>
+      <div class="result">omit(obj, ['country']): <code>${JSON.stringify(utils.object.omit(obj, ['country']))}</code></div>
+    `;
+
+    // Number demos
+    const numberDemo = document.getElementById('number-demo');
+    numberDemo.innerHTML = `
+      <div class="result">random(1, 10): <code>${utils.number.random(1, 10)}</code></div>
+      <div class="result">clamp(15, 0, 10): <code>${utils.number.clamp(15, 0, 10)}</code></div>
+      <div class="result">sum(1, 2, 3, 4, 5): <code>${utils.number.sum(1, 2, 3, 4, 5)}</code></div>
+    `;
+
+    console.log('✅ Utility Library Loaded!', utils);
+  </script>
+</body>
+</html>

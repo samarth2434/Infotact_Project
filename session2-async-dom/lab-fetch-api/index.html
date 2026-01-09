@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch API Lab - JSONPlaceholder</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    button {
+      background: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      color: #667eea;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    button:active {
+      transform: translateY(0);
+    }
+    #loading {
+      text-align: center;
+      color: white;
+      font-size: 1.2em;
+      display: none;
+    }
+    #data-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+    }
+    .card h3 {
+      color: #667eea;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #666;
+      line-height: 1.6;
+    }
+    .card .meta {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #999;
+    }
+    .error {
+      background: #ff5252;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Fetch API Lab</h1>
+    
+    <div class="controls">
+      <button onclick="fetchPosts()">Fetch Posts</button>
+      <button onclick="fetchUsers()">Fetch Users</button>
+      <button onclick="fetchComments()">Fetch Comments</button>
+      <button onclick="fetchTodos()">Fetch Todos</button>
+      <button onclick="clearData()">Clear</button>
+    </div>
+    
+    <div id="loading">⏳ Loading data...</div>
+    <div id="data-container"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
